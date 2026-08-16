@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uno Coffee | أونو كافيه</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>☕ Uno Coffee</h1>
+        <p>القهوة والمزاج في مكان واحد</p>
+    </header>
+
+    <nav>
+        <a href="#menu">المنيو</a>
+        <a href="#about">عن أونو</a>
+        <a href="#order">اطلب الآن</a>
+    </nav>
+
+    <section id="menu" class="section">
+        <h2 class="title">قائمة المشروبات المميزة</h2>
+        <div class="menu-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=300" alt="Espresso">
+                <h3>إسبريسو</h3>
+                <p class="price">40 ج.م</p>
+                <button onclick="addOrder('إسبريسو')">إضافة للطلب</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=300" alt="Spanish Latte">
+                <h3>سبانيش لاتيه</h3>
+                <p class="price">65 ج.م</p>
+                <button onclick="addOrder('سبانيش لاتيه')">إضافة للطلب</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=300" alt="Cappuccino">
+                <h3>كابوتشينو</h3>
+                <p class="price">55 ج.م</p>
+                <button onclick="addOrder('كابوتشينو')">إضافة للطلب</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=300" alt="Iced Coffee">
+                <h3>آيس كوفي</h3>
+                <p class="price">60 ج.م</p>
+                <button onclick="addOrder('آيس كوفي')">إضافة للطلب</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section" style="background-color: #f7ebe1; border-radius: 20px;">
+        <h2 class="title">عن Uno Coffee</h2>
+        <p style="max-width: 600px; margin: 0 auto; line-height: 1.9; color: #5a473c; font-size: 16px;">
+            في أونو كافيه بنقدم لك أجود أنواع حبوب البن المحموصة بحرفية، عشان تحس بالفرق في كل رشفة. مكانك المفضل للشغل والترويق!
+        </p>
+    </section>
+
+    <section id="order" class="section">
+        <h2 class="title">تأكيد الطلب السريع</h2>
+        <div class="order-box">
+            <p id="cart-text" style="margin-bottom: 18px; color: #8c5a2b; font-size: 16px;">لم تقم بإضافة أي مشروب بعد</p>
+            <input type="text" id="cust-name" placeholder="اسمك">
+            <input type="tel" id="cust-phone" placeholder="رقم الموبايل">
+            <button class="send-btn" onclick="sendOrder()">إرسال الطلب عبر الواتساب 💬</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 - Uno Coffee</p>
+    </footer>
+
+    <script>
+        let selectedItem = '';
+        
+        function addOrder(name) {
+            selectedItem = name;
+            document.getElementById('cart-text').innerText = 'المشروب المحدد: ' + name;
+            document.getElementById('cart-text').style.fontWeight = 'bold';
+        }
+
+        function sendOrder() {
+            let customerName = document.getElementById('cust-name').value;
+            let customerPhone = document.getElementById('cust-phone').value;
+
+            if (selectedItem === '') {
+                alert('برجاء اختيار مشروب من المنيو أولاً!');
+                return;
+            }
+
+            if (customerName.trim() === '' || customerPhone.trim() === '') {
+                alert('برجاء كتابة الاسم ورقم الموبايل!');
+                return;
+            }
+
+            // هنسيب الرقم المؤقت ده لحد ما تديني رقمك ونغيره
+            let myPhoneNumber = "201144414083"; 
+
+            let message = `طلب جديد من Uno Coffee ☕%0A` +
+                          `المشروب: ${selectedItem}%0A` +
+                          `الاسم: ${customerName}%0A` +
+                          `الرقم: ${customerPhone}`;
+
+            let whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
+
+            // تحويل مباشر عشان يتفتح الواتساب بدون حظر المتصفح
+            window.location.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>
