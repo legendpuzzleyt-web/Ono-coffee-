@@ -1,200 +1,166 @@
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-
+/* --- 1. إعدادات عامة والخطوط --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #fdfbf7;
-    color: #4a3b32;
-    text-align: center;
+    background-color: #f9f6f0;
+    color: #2c2c2c;
+    direction: rtl;
+    line-height: 1.6;
 }
 
-/* الهيدر الرئيسي */
+/* --- 2. الهيدر وشريط التصفح --- */
 header {
-    background: linear-gradient(rgba(43, 29, 12, 0.75), rgba(43, 29, 12, 0.75)), 
-                url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800');
-    background-size: cover;
-    background-position: center;
-    padding: 70px 20px;
-    color: #f7ebe1;
-}
-
-header h1 {
-    font-size: 40px;
-    color: #e6c594;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 18px;
-    color: #dfd3c3;
-}
-
-/* شريط التنقل */
-nav {
-    background-color: #3d2b1f;
-    padding: 14px;
+    background-color: #1a1a1a;
+    color: #d4af37;
+    /* لون ذهبي خفيف */
+    padding: 20px 8%;
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-nav a {
-    color: #f7ebe1;
+header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+header nav a {
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 15px;
-    transition: 0.3s;
+    margin-right: 20px;
+    font-size: 1rem;
+    transition: color 0.3s;
 }
 
-nav a:hover {
-    color: #e6c594;
+header nav a:hover {
+    color: #d4af37;
 }
 
-/* الأقسام والعناوين */
-.section {
-    padding: 50px 20px;
-    max-width: 900px;
-    margin: 0 auto;
+/* --- 3. قسم الترحيب (Hero Section) --- */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') no-repeat center center/cover;
+    color: #ffffff;
 }
 
-.title {
-    font-size: 26px;
-    color: #3d2b1f;
-    margin-bottom: 30px;
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #f3e5ab;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* --- 4. قسم المنيو (Menu) --- */
+.menu-section {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.menu-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #3e2723;
     position: relative;
     display: inline-block;
 }
 
-.title::after {
+.menu-section h2::after {
     content: '';
-    display: block;
     width: 50%;
     height: 3px;
-    background-color: #c89661;
-    margin: 8px auto 0;
-    border-radius: 2px;
+    background-color: #d4af37;
+    position: absolute;
+    bottom: -10px;
+    right: 25%;
 }
 
-/* كروت المنيو مرتبة */
-.menu-grid {
+/* شبكة عرض الكروت */
+.menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
+/* تصميم الكارت */
 .card {
     background-color: #ffffff;
-    border-radius: 16px;
-    padding: 15px;
-    border: 1px solid #f0e6d2;
-    box-shadow: 0 6px 15px rgba(61, 43, 31, 0.06);
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 15px;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(61, 43, 31, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card img {
     width: 100%;
-    height: 130px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 12px;
 }
 
 .card h3 {
-    margin: 12px 0 4px;
-    font-size: 19px;
-    color: #3d2b1f;
+    color: #1a1a1a;
+    margin: 15px 0 5px;
+    font-size: 1.2rem;
 }
 
-.card .price {
-    color: #8c5a2b;
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 12px;
+.card p {
+    color: #666;
+    font-size: 0.9rem;
+    padding: 0 15px;
+    margin-bottom: 15px;
 }
 
-.card button {
-    background-color: #d8b28a;
-    color: #2b1d0c;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    transition: 0.2s;
+/* الجزء السفلي من الكارت */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    margin-top: auto;
 }
 
-.card button:hover {
-    background-color: #c89661;
+.price {
+    font-weight: bold;
+    color: #2e7d32;
+    font-size: 1.1rem;
+}
+
+/* زرار الطلب */
+.order-btn {
+    background-color: #3e2723;
     color: #ffffff;
-}
-
-/* قسم الطلب */
-.order-box {
-    background-color: #f7ebe1;
-    padding: 30px 20px;
-    border-radius: 16px;
-    border: 1px solid #e6d5c3;
-    max-width: 420px;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #d8c4b0;
-    background: #ffffff;
-    color: #3d2b1f;
-    font-size: 15px;
-    outline: none;
-}
-
-input:focus {
-    border-color: #8c5a2b;
-}
-
-.send-btn {
-    background-color: #25d366;
-    color: white;
     border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-top: 12px;
-    transition: 0.2s;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.send-btn:hover {
-    background-color: #1ebc57;
-}
-
-footer {
-    background-color: #2b1d0c;
-    padding: 25px;
-    color: #dfd3c3;
-    font-size: 14px;
-    margin-top: 40px;
+.order-btn:hover {
+    background-color: #d4af37;
+    color: #1a1a1a;
 }

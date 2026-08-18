@@ -3,109 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uno Coffee | أونو كافيه</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ONO CAFE & PASTRY</title>
+    <style>
+        /* --- 1. إعدادات عامة والخطوط --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #111111;
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        /* --- 2. الهيدر وشريط التصفح --- */
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* اللوجو الدائري بخلفية بيضاء */
+        .circle-logo {
+            width: 55px;
+            height: 55px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+            padding: 4px;
+        }
+
+        .logo-text-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- 3. قسم الترحيب --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #111111;
+            color: #ffffff;
+            border-bottom: 3px solid #000000;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            letter-spacing: 1.5px;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #cccccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- 4. قسم المنيو --- */
+        .menu-section {
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .menu-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 35px;
+            color: #111111;
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu-section h2::after {
+            content: '';
+            width: 50%;
+            height: 2px;
+            background-color: #111111;
+            position: absolute;
+            bottom: -8px;
+            right: 25%;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+
+        .card h3 {
+            color: #111111;
+            margin: 15px 0 6px;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: #666666;
+            font-size: 0.9rem;
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #111111;
+            font-size: 1.15rem;
+        }
+
+        .order-btn {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .order-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* --- 5. الفوتر / التواصل --- */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 50px;
+        }
+
+        footer h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            margin-bottom: 5px;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #e5e5e5;
+        }
+    </style>
 </head>
 <body>
 
+    <!-- شريط الأعلى -->
     <header>
-        <h1>☕ Uno Coffee</h1>
-        <p>القهوة والمزاج في مكان واحد</p>
+        <div class="logo-container">
+            <!-- اللوجو الدائري بخلفية بيضاء -->
+            <div class="circle-logo">
+                <svg viewBox="0 0 500 250" width="100%" height="100%">
+                    <circle cx="100" cy="100" r="80" fill="#000000"/>
+                    <circle cx="100" cy="100" r="50" fill="#ffffff"/>
+                    <circle cx="100" cy="100" r="35" fill="#000000"/>
+                    <path d="M 140 85 A 20 20 0 0 1 140 115 Z" fill="#ffffff"/>
+                    
+                    <path d="M 190 20 L 225 20 L 290 150 L 290 20 L 320 20 L 320 180 L 285 180 L 220 50 L 220 180 L 190 180 Z" fill="#000000"/>
+                    
+                    <circle cx="400" cy="100" r="80" fill="#000000"/>
+                    <ellipse cx="400" cy="100" rx="45" ry="65" fill="#ffffff"/>
+                    
+                    <text x="250" y="235" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="34" fill="#000000" text-anchor="middle" letter-spacing="3">CAFE &amp; PASTRY</text>
+                </svg>
+            </div>
+            <span class="logo-text-header">ONO</span>
+        </div>
+        <nav>
+            <a href="#menu">المنيو</a>
+            <a href="#contact">التواصل</a>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#menu">المنيو</a>
-        <a href="#about">عن أونو</a>
-        <a href="#order">اطلب الآن</a>
-    </nav>
+    <!-- قسم الترحيب -->
+    <section class="hero">
+        <h2>ONO COFFEE</h2>
+        <p>CAFE & PASTRY</p>
+    </section>
 
-    <section id="menu" class="section">
-        <h2 class="title">قائمة المشروبات المميزة</h2>
-        <div class="menu-grid">
+    <!-- قسم المنيو -->
+    <section id="menu" class="menu-section">
+        <h2>قائمة المشروبات والحلويات</h2>
+        <div class="menu-items">
+
+            <!-- 1. Chocolate Cookies -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=300" alt="Espresso">
-                <h3>إسبريسو</h3>
-                <p class="price">40 ج.م</p>
-                <button onclick="addOrder('إسبريسو')">إضافة للطلب</button>
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80" alt="Chocolate Cookies">
+                <h3>Chocolate Cookies</h3>
+                <p>كوكيز شوكولاتة غنية ودافئة محشوة بالشوكولاتة الذائبة</p>
+                <div class="card-footer">
+                    <span class="price">35 ج.م</span>
+                    <a href="#" class="order-btn" onclick="makeOrder(this, 'Chocolate Cookies', '35 ج.م')">أطلب الآن 💬</a>
+                </div>
             </div>
+
+            <!-- 2. Iced Latte -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=300" alt="Spanish Latte">
-                <h3>سبانيش لاتيه</h3>
-                <p class="price">65 ج.م</p>
-                <button onclick="addOrder('سبانيش لاتيه')">إضافة للطلب</button>
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" alt="Iced Latte">
+                <h3>Iced Latte</h3>
+                <p>إسبريسو غني مع حليب بارد ومنعش</p>
+                <div class="card-footer">
+                    <span class="price">45 ج.م</span>
+                    <a href="#" class="order-btn" onclick="makeOrder(this, 'Iced Latte', '45 ج.م')">أطلب الآن 💬</a>
+                </div>
             </div>
+
+            <!-- 3. Chocolate Frappe -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=300" alt="Cappuccino">
-                <h3>كابوتشينو</h3>
-                <p class="price">55 ج.م</p>
-                <button onclick="addOrder('كابوتشينو')">إضافة للطلب</button>
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80" alt="Chocolate Frappe">
+                <h3>Chocolate Frappe</h3>
+                <p>مشروب شوكولاتة مثلج ومزين بصوص الشوكولاتة والكاكاو</p>
+                <div class="card-footer">
+                    <span class="price">55 ج.م</span>
+                    <a href="#" class="order-btn" onclick="makeOrder(this, 'Chocolate Frappe', '55 ج.م')">أطلب الآن 💬</a>
+                </div>
             </div>
+
+            <!-- 4. Spanish Latte -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=300" alt="Iced Coffee">
-                <h3>آيس كوفي</h3>
-                <p class="price">60 ج.م</p>
-                <button onclick="addOrder('آيس كوفي')">إضافة للطلب</button>
+                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80" alt="Spanish Latte">
+                <h3>Spanish Latte</h3>
+                <p>خلطة الإسبريسو الخاصة مع الحليب المكثف المحلى</p>
+                <div class="card-footer">
+                    <span class="price">50 ج.م</span>
+                    <a href="#" class="order-btn" onclick="makeOrder(this, 'Spanish Latte', '50 ج.م')">أطلب الآن 💬</a>
+                </div>
             </div>
+
+            <!-- 5. Red Velvet Cake -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=600&q=80" alt="Red Velvet Cake">
+                <h3>Red Velvet Cake</h3>
+                <p>قطعة كيك ريد فيلفيت هشة مع الكريمة الفاخرة</p>
+                <div class="card-footer">
+                    <span class="price">45 ج.م</span>
+                    <a href="#" class="order-btn" onclick="makeOrder(this, 'Red Velvet Cake', '45 ج.م')">أطلب الآن 💬</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="about" class="section" style="background-color: #f7ebe1; border-radius: 20px;">
-        <h2 class="title">عن Uno Coffee</h2>
-        <p style="max-width: 600px; margin: 0 auto; line-height: 1.9; color: #5a473c; font-size: 16px;">
-            في أونو كافيه بنقدم لك أجود أنواع حبوب البن المحموصة بحرفية، عشان تحس بالفرق في كل رشفة. مكانك المفضل للشغل والترويق!
-        </p>
-    </section>
-
-    <section id="order" class="section">
-        <h2 class="title">تأكيد الطلب السريع</h2>
-        <div class="order-box">
-            <p id="cart-text" style="margin-bottom: 18px; color: #8c5a2b; font-size: 16px;">لم تقم بإضافة أي مشروب بعد</p>
-            <input type="text" id="cust-name" placeholder="اسمك">
-            <input type="tel" id="cust-phone" placeholder="رقم الموبايل">
-            <button class="send-btn" onclick="sendOrder()">إرسال الطلب عبر الواتساب 💬</button>
-        </div>
-    </section>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 - Uno Coffee</p>
+    <!-- قسم التواصل / Footer -->
+    <footer id="contact">
+        <h3>ONO CAFE & PASTRY</h3>
+        <p>مواعيد العمل: يومياً من 8 صباحاً حتى 12 منتصف الليل</p>
+        <a href="https://wa.me/201062724377" target="_blank" class="whatsapp-link">💬 تواصل معنا عبر الواتساب</a>
+        <p style="margin-top: 25px; font-size: 0.8rem; opacity: 0.5;">© 2026 جميع الحقوق محفوظة لـ ONO Coffee</p>
     </footer>
 
+    <!-- سكريبت توليد رقم الطلب بالرقم الجديد -->
     <script>
-        let selectedItem = '';
-        
-        function addOrder(name) {
-            selectedItem = name;
-            document.getElementById('cart-text').innerText = 'المشروب المحدد: ' + name;
-            document.getElementById('cart-text').style.fontWeight = 'bold';
-        }
+        function makeOrder(element, itemName, price) {
+            const phoneNumber = "201062724377";
+            const orderId = Math.floor(1000 + Math.random() * 9000);
 
-        function sendOrder() {
-            let customerName = document.getElementById('cust-name').value;
-            let customerPhone = document.getElementById('cust-phone').value;
+            const message = `مرحباً ONO Coffee ☕\n` +
+                            `أود عمل طلب جديد:\n` +
+                            `📌 رقم الطلب: #ONO-${orderId}\n` +
+                            `🍹 المنتج: ${itemName}\n` +
+                            `💰 السعر: ${price}`;
 
-            if (selectedItem === '') {
-                alert('برجاء اختيار مشروب من المنيو أولاً!');
-                return;
-            }
-
-            if (customerName.trim() === '' || customerPhone.trim() === '') {
-                alert('برجاء كتابة الاسم ورقم الموبايل!');
-                return;
-            }
-
-            // هنسيب الرقم المؤقت ده لحد ما تديني رقمك ونغيره
-            let myPhoneNumber = "201144414083"; 
-
-            let message = `طلب جديد من Uno Coffee ☕%0A` +
-                          `المشروب: ${selectedItem}%0A` +
-                          `الاسم: ${customerName}%0A` +
-                          `الرقم: ${customerPhone}`;
-
-            let whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
-
-            // تحويل مباشر عشان يتفتح الواتساب بدون حظر المتصفح
-            window.location.href = whatsappUrl;
+            element.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            element.target = "_blank";
         }
     </script>
+
 </body>
 </html>
